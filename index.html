@@ -15,12 +15,24 @@
 
     <div id="options"> 
         <button onclick="createScreen(parseInt(prompt('Select the size for your new sketch. 100x100 is the max!', '16')))">New screen!</button>
+        <label for="colors">Select a color:</label>
+        <select name="colors" id="colors">
+                <option value="blue">Blue</option>
+                <option value="red">Red</option>
+                <option value="black">Black</option>
+                <option value="yellow">Yellow</option>
+                <option value="green">Green</option>
+                <option value="purple">Purple</option>
+                <option value="brown">Brown</option>
+        </select>
     </div>
     <div id="screen">
 
     </div>
 
     <script>
+        let selectedColor = document.querySelector('#colors');
+        console.log(selectedColor);
 
         const screen = document.querySelector('#screen');
         let root = document.documentElement;
@@ -42,7 +54,7 @@
         }
 
         screen.addEventListener("mouseover", function(e) {
-            e.target.style.backgroundColor = "blue";
+            e.target.style.backgroundColor = selectedColor.value;
         })
 
     </script>
