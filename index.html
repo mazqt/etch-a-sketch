@@ -14,7 +14,7 @@
 <body>
 
     <div id="options"> 
-        <button id="newScreen">Reset the screen!</button>
+        <button onclick="createScreen(parseInt(prompt('Select the size for your new sketch. 100x100 is the max!', '16')))">New screen!</button>
     </div>
     <div id="screen">
 
@@ -23,12 +23,22 @@
     <script>
 
         const screen = document.querySelector('#screen');
+        let root = document.documentElement;
+        
+        createScreen(16);
 
-        for (i = 0; i < 256; i++) {
-            let pixel = document.createElement('div');
-            pixel.setAttribute('id', `${i}`);
-            pixel.setAttribute('class', 'pixel');
-            screen.appendChild(pixel);
+        function createScreen(size) {
+            if (size > 100 || size < 4) {
+                return alert("Too big or too small!");
+            }
+            screen.innerHTML = "";
+            for (i = 0; i < (size * size); i++) {
+                let pixel = document.createElement('div');
+                pixel.setAttribute('id', `${i}`);
+                pixel.setAttribute('class', 'pixel');
+                screen.appendChild(pixel);
+            }
+            root.style.setProperty('--pixelSize', `${(100 / size)}%`);
         }
 
         screen.addEventListener("mouseover", function(e) {

@@ -25,7 +25,7 @@ html, body {
 }
 .pixel {;
     background-color: gray;
-    border-color: black;
+    border-color: #676a6e;
     border-style: solid;
     border-width: 1px;
 }
