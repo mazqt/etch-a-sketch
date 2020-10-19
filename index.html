@@ -17,13 +17,14 @@
         <button onclick="createScreen(parseInt(prompt('Select the size for your new sketch. 100x100 is the max!', '16')))">New screen!</button>
         <label for="colors">Select a color:</label>
         <select name="colors" id="colors">
-                <option value="blue">Blue</option>
-                <option value="red">Red</option>
-                <option value="black">Black</option>
-                <option value="yellow">Yellow</option>
-                <option value="green">Green</option>
-                <option value="purple">Purple</option>
-                <option value="brown">Brown</option>
+                <option value="rgba(0, 0, 0, 0.1)">Black</option>
+                <option value="rgba(0, 0, 255, 0.1)">Blue</option>
+                <option value="rgba(255, 0, 0, 0.1)">Red</option>
+                <option value="rgba(234, 140, 0, 0.1)">Orange</option>
+                <option value="rgba(255, 255, 0, 0.1)">Yellow</option>
+                <option value="rgba(0, 255, 0, 0.1)">Green</option>
+                <option value="rgba(167, 15, 129, 0.1)">Purple</option>
+                <option value="rgba(102, 61, 0, 0.1)">Brown</option>
         </select>
     </div>
     <div id="screen">
@@ -32,8 +33,6 @@
 
     <script>
         let selectedColor = document.querySelector('#colors');
-        console.log(selectedColor);
-
         const screen = document.querySelector('#screen');
         let root = document.documentElement;
         
@@ -53,9 +52,29 @@
             root.style.setProperty('--pixelSize', `${(100 / size)}%`);
         }
 
+        function darkenHue(color) {
+            let currentHue = color.slice(color.length-4, color.length-1);
+            let newHue = (parseFloat(currentHue) + 0.1).toString()
+            return color.replace(currentHue, newHue)
+        }        
+
+        function sameHue(color1, color2) {
+            let fullColor = (color1.slice(0, color1.length - 6) + ")").split('a').join('');
+            if ((fullColor  === color2)) {
+                return true
+            }
+            return color1.slice(0, color1.length - 4) === color2.slice(0, color2.length - 4);
+        }
+
         screen.addEventListener("mouseover", function(e) {
-            e.target.style.backgroundColor = selectedColor.value;
-        })
+                console.log(e.target.style.backgroundColor)
+                console.log(selectedColor.value)
+                if (e.target.style.backgroundColor == "" || !(sameHue(selectedColor.value, e.target.style.backgroundColor)) ) {
+                    e.target.style.backgroundColor = selectedColor.value;
+                } else {
+                    e.target.style.backgroundColor = (darkenHue(e.target.style.backgroundColor));
+                }
+            })
 
     </script>
 </body>

@@ -24,7 +24,7 @@ html, body {
     grid-template-rows: repeat(auto-fit, minmax(var(--pixelSize), 1fr));
 }
 .pixel {;
-    background-color: gray;
+    background-color: white;
     border-color: #676a6e;
     border-style: solid;
     border-width: 1px;
