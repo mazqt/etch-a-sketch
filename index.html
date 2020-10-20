@@ -3,15 +3,18 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Etch-a-Sketch!</title>
     <meta name="author" content="Jesper Persson">
     <meta name="description" content="Etch-a-sketch webite">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada&display=swap" rel="stylesheet">
 </head>
 
 <body>
+
+    <h1 id="header">Etch a Sketch!</h1>
 
     <div id="options"> 
         <button onclick="createScreen(parseInt(prompt('Select the size for your new sketch. 100x100 is the max!', '16')))">New screen!</button>
@@ -27,6 +30,7 @@
                 <option value="rgba(102, 61, 0, 0.1)">Brown</option>
         </select>
     </div>
+    
     <div id="screen">
 
     </div>

@@ -11,15 +11,19 @@ html, body {
     height: 100%;
 }
 
+#header {
+    font-family: 'Lemonada', cursive;
+}
 
 #options {
-    padding-bottom: 10px;
+    padding-bottom: 2vw;
+    padding-top: 1vw;
 }
 
 #screen {
     display: grid;
-    width: 40vw;
-    height: 40vw;
+    width: 35vw;
+    height: 35vw;
     grid-template-columns: repeat(auto-fill, minmax(var(--pixelSize), 1fr));
     grid-template-rows: repeat(auto-fit, minmax(var(--pixelSize), 1fr));
 }
